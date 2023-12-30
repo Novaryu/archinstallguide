@@ -13,10 +13,10 @@
 7. Test your ability to sudo properly by logging in with `logout` then logging in as your user. Once logged in, try `sudo pacman -Syu` to make sure sudo works
 8. `logout` and re-enter root's login
 ### Install a window manager (i3 in this example)
-1. Run `sudo pacman -S xorg-server xorg-xinit` to install Xorg and necessary addons.
-2. Run `sudo pacman -S i3-wm` and when it asks what fonts you want select `2 (noto-fonts)`or whatever font pack you want.
-3. Install your favorite terminal with `sudo pacman -S alacritty` replacing alacritty with your terminal
-4. Open `sudo nvim /etc/X11/xinit/xinitrc` and comment these lines out (add # at the beginning): 
+1. Run `pacman -S xorg-server xorg-xinit` to install Xorg and necessary addons.
+2. Run `pacman -S i3-wm` and when it asks what fonts you want select `2 (noto-fonts)`or whatever font pack you want.
+3. Install your favorite terminal with `pacman -S alacritty` replacing alacritty with your terminal
+4. Open `nvim /etc/X11/xinit/xinitrc` and comment these lines out (add # at the beginning): 
 ```
 twm &
 xclock -geometry 50x50-1+1 &
@@ -27,7 +27,7 @@ exec xterm -geometry 80x66+0+0 -name login
 And add this to the bottom of the file: `exec i3`
 5. Now try `startx` and if successful, it should launch into i3 with no issue. It will ask you if you want to configure, and you can follow the prompts as you please.
    (You can quit i3 by hitting Ctrl+Alt+E and clicking "Yes, exit i3")
-6. You can also copy this file into your user directory and call it .xinitrc by executing `sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc` This allows you to make changes for each user that won't affect root.
+6. You can now log in as your user and run `startx` and it should grab these defaults. In addition, you can also copy this file into your user directory and call it .xinitrc by executing `sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc` This allows you to make changes for each user that won't affect root.
 7. For reference, i3 default config is located in `/etc/i3/config` but if you ran through the configuration at the start while logged in as your user it should create a user-defined config at ~/.config/i3/config
 8. Configure your i3 as you wish with `nvim ~/.config/i3/config`
 9. You can set the X server to start upon logon by running `nvim ~/.bash_profile` and appending this to the bottom of the file:
@@ -37,6 +37,7 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
 fi
 ```
 ### Autologin
+NOTE: Autologin presents a real security risk. Make sure you secure your system properly before attempting to add autologin routines.
 1. Create a drop-in autologin configuration file with `systemctl edit getty@tty1.service --drop-in=autologin` and add the following below the first two lines: 
 ```
 [Service]
@@ -64,7 +65,7 @@ In addition, change TimeoutSec to `TimeoutSec=0`
      **NOTE: BE VERY CAREFUL WHEN EDITING THIS FILE AS BAD CHANGES CAN COMPLETELY PREVENT BOOT. THERE IS CURRENTLY NO WAY TO REMOVE THESE ECHOS SAFELY**
 	 *NOTE 2: Whenever you change grub settings and reload the grub config, you will have to manually comment out these lines again.*
 9. Reboot to see a clean, black slate of pure zen (also read as: terrifying lack of information)
-## Install necessary audio firmware and packages
+### Install necessary audio firmware and packages
 1. (IF on a newer laptop that needs it only) Install sound open firmware `sudo pacman -S sof-firmware`
 2. Install pipewire, pipewire-pulse, pavucontrol, and alsa-tools. `sudo pacman -S pipewire pipewire-pulse pavucontrol alsa-tools`
 ### Scaling with HiDPI Displays
