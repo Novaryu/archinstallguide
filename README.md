@@ -11,4 +11,4 @@ Keep in mind, as always, that YMMV and different hardware often demands a differ
 [Installation](Installation.md)
 [Configuration](Configuration.md)
 [Miscellaneous](Miscellaneous.md)
-[Hardware](Hardware.md)
+[Laptop](Laptop.md)
