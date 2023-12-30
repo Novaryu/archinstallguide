@@ -11,6 +11,7 @@ ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chmod g+w /sys/class/backlight
 ```
 4. Save and reboot
 5. Change backlight with `echo [brightness] > sys/class/backlight/intel_backlight/brightness` (replace intel_backlight with your laptop-specific directory)
+6. Alternatively, use the script provided in scripts/brightness_control.sh
 ### Allow changes to battery threshold
 Not all laptops support this function! Check if yours is compatible first.
 1. Add battery rules file with `sudo nvim /etc/udev/rules.d/asus-battery-charge-threshold.rules`
