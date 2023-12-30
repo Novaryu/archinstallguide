@@ -1,4 +1,4 @@
-# Arch Linux Comprehensive Installation Guide.
+# Arch Linux Comprehensive Installation Guide
 This guide is for noobs or people like me who still don't remember certain commands even after installing arch 10 times.
 
 Or for those who are tired of navigating to multiple different pages in the arch wiki to find one command.
