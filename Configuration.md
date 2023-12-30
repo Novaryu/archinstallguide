@@ -25,11 +25,12 @@ xterm -geometry 80x20+494-0 &
 exec xterm -geometry 80x66+0+0 -name login
 ```
 And add this to the bottom of the file: `exec i3`
+
 5. Now log in as your user and try `startx`. It should grab the system defaults and launch into i3. It will ask you if you want to configure, and you can follow the prompts as you please. (You can quit i3 by hitting Ctrl+Alt+E and clicking "Yes, exit i3")
 6. Copy the xorg config file into your user directory and call it .xinitrc by executing `sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc` This allows you to make changes for each user that won't affect root.
-7. For reference, i3 default config is located in `/etc/i3/config` but if you ran through the configuration at the start while logged in as your user it should create a user-defined config at ~/.config/i3/config
-8. Configure your i3 as you wish with `nvim ~/.config/i3/config`
-9. You can set the X server to start upon logon by running `nvim ~/.bash_profile` and appending this to the bottom of the file:
+For reference, i3 default config is located in `/etc/i3/config` but if you ran through the configuration at the start while logged in as your user it should create a user-defined config at ~/.config/i3/config
+7. Configure your i3 as you wish with `nvim ~/.config/i3/config`
+8. You can set the X server to start upon logon by running `nvim ~/.bash_profile` and appending this to the bottom of the file:
 ```
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec startx
