@@ -10,4 +10,5 @@ Keep in mind, as always, that YMMV and different hardware often demands a differ
 ### GUIDES
 [Installation](Installation.md)
 [Configuration](Configuration.md)
+[Miscellaneous](Miscellaneous.md)
 [Hardware](Hardware.md)
