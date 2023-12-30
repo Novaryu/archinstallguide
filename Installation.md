@@ -25,12 +25,12 @@ Test your connection with `ping archlinux.org`
 Confirm system time updated with `timedatectl` (It will be in UTC, we will change this later)
 ### Disk Partitioning
 1. List all disks with `fdisk -l`
-2. Enter the desired disk with `fdisk /dev/[device]`
+2. Enter the desired disk with `fdisk /dev/[device]`, replacing `[device]` with your listed device from fdisk
 3. Delete all existing partitions with `d` followed by the number (repeat until no partitions)
 4. Create a new partition with `n`
-5. Specify the partition number as one (default) and leave the first sector as default. The last sector should be `+1G`
+5. Specify the partition number as one (default) and leave the first sector as default. The last sector should be `+1G` or your desired EFI size.
 6. Set the partition to an EFI system partition with `t` (set it to 1)
-7. Do the same with another partition (also last sector set to `+1G`)
+7. Do the same with another partition (also last sector set to `+1G` or your desired SWAP size)
 8. Set the partition to a SWAP partition with t (find SWAP with -L)
 9. Do the same with another partition, but leave the last sector as default (the remainder of the drive)
 10. Set the partition to a Linux Filesystem partition with t (find Linux Filesystem with -L)
