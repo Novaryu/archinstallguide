@@ -1,3 +1,6 @@
+### Install unicode fonts
+1. Install all noto fonts with `sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji`
+2. Rebuild the font cache with `sudo fc-cache -f -v`
 ### Autologin
 NOTE: Autologin presents a real security risk. Make sure you secure your system properly before attempting to add autologin routines.
 1. Create a drop-in autologin configuration file with `systemctl edit getty@tty1.service --drop-in=autologin` and add the following below the first two lines: 
@@ -27,3 +30,18 @@ In addition, change TimeoutSec to `TimeoutSec=0`
      **NOTE: BE VERY CAREFUL WHEN EDITING THIS FILE AS BAD CHANGES CAN COMPLETELY PREVENT BOOT. THERE IS CURRENTLY NO WAY TO REMOVE THESE ECHOS SAFELY**
 	 *NOTE 2: Whenever you change grub settings and reload the grub config, you will have to manually comment out these lines again.*
 9. Reboot to see a clean, black slate of pure zen (also read as: terrifying lack of information)
+### Scaling with HiDPI Displays
+1. Create (if it doesn't exist) a .profile with `touch ~/.profile` and edit it with `nvim ~/.profile`. Add these lines:
+```
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+export QT_AUTO_SCREEN_SET_FACTOR=0
+export QT_SCALE_FACTOR=2
+export QT_FONT_DPI=96
+```
+2. Create (if it doesn't exist) a .Xresources with `touch ~/.Xresources` and edit it with `nvim ~/.Xresources`. Add these lines:
+```
+Xft.dpi: 192
+Xcursor.size: 32
+```
+3. Reboot, and see the power of good scaling!

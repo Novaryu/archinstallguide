@@ -36,24 +36,3 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec startx
 fi
 ```
-### Install necessary audio firmware and packages
-1. (IF on a newer laptop that needs it only) Install sound open firmware `sudo pacman -S sof-firmware`
-2. Install pipewire, pipewire-pulse, pavucontrol, and alsa-tools. `sudo pacman -S pipewire pipewire-pulse pavucontrol alsa-tools`
-### Scaling with HiDPI Displays
-1. Create (if it doesn't exist) a .profile with `touch ~/.profile` and edit it with `nvim ~/.profile`. Add these lines:
-```
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
-export QT_AUTO_SCREEN_SET_FACTOR=0
-export QT_SCALE_FACTOR=2
-export QT_FONT_DPI=96
-```
-2. Create (if it doesn't exist) a .Xresources with `touch ~/.Xresources` and edit it with `nvim ~/.Xresources`. Add these lines:
-```
-Xft.dpi: 192
-Xcursor.size: 32
-```
-3. Reboot, and see the power of good scaling!
-### Install unicode fonts
-1. Install all noto fonts with `sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji`
-2. Rebuild the font cache with `sudo fc-cache -f -v`
