@@ -61,8 +61,8 @@ Replace `[partition#]`below with the actual partition
 10. Set the root password with `passwd`, following the prompts
 #### (Wired) Setup network service
 1. Install necessary tools with `pacman -S netctl dhcpcd`
-2. Find your network with `ip link`
-3. Enable your network with `systemctl enable dhcpcd@eth0.service`, replacing eth0 with your card's identifier
+2. Find your network card with `ip link`
+3. Enable your network card with `systemctl enable dhcpcd@eth0.service`, replacing eth0 with your card's identifier
 #### (Wireless) Setup wireless service
 1. Install necessary tools with `pacman -S netctl dialog wpa_supplicant dhcpcd`
 2. Enable the resolved service with `systemctl enable systemd-resolved.service`
