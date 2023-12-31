@@ -66,3 +66,14 @@ Xcursor.size: 32
 4. Compile with `make`
 5. Install with `sudo make install`
 6. Enable default root permissions with `sudo make setuid`
+### Installing Wine
+1. enable the multilib repository by opening `sudo /etc/pacman.conf` and uncommenting this section:
+```
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+2. Upgrade the system with `sudo pacman -Syu`
+3. Install Wine with `sudo pacman -S wine`
+4. Install Wine Mono with `sudo pacman -S wine-mono` (some .NET applications require it)
+5. Run `wine [program]`
+

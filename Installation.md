@@ -54,11 +54,12 @@ Replace `[partition#]`below with the actual partition, again found via `fdisk -l
 3. Find your time zone with `timedatectl list-timezones`
 4. Set the time zone with (as an example) `ln -sf /usr/share/zoneinfo/US/Pacific` (Replace US/Pacific with your time zone)
 5. Generate the adjusted time with `hwclock --systohc`
-6. Open locale generator by opening etc/locale.gen in your installed editor `nvim /etc/locale.gen` and uncomment (delete #) locales you want (e.g. en_US.UTF-8 UTF-8)
-7. Run `locale-gen` to generate the locales
-8. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
-9. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
-10. Set the root password with `passwd`, following the prompts
+6. Enable the time-sync service with `systemctl enable systemd-timesyncd.service`
+7. Open locale generator by opening etc/locale.gen in your installed editor `nvim /etc/locale.gen` and uncomment (delete #) locales you want (e.g. en_US.UTF-8 UTF-8)
+8. Run `locale-gen` to generate the locales
+9. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
+10. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
+11. Set the root password with `passwd`, following the prompts
 #### (Wired) Setup network service
 1. Install necessary tools with `pacman -S netctl dhcpcd`
 2. Find your network card with `ip link`

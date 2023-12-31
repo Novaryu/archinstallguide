@@ -1,6 +1,5 @@
 ### Install necessary audio firmware and packages
 1. (IF on a newer laptop that needs it only) Install sound open firmware `sudo pacman -S sof-firmware`
-2. Install pipewire, pipewire-pulse, pavucontrol, and alsa-tools. `sudo pacman -S pipewire pipewire-pulse pavucontrol alsa-tools`
 ### Allow changes to backlight
 1. Add user to video group with `sudo usermod -a -G video [username]`
 2. Add backlight rule file with `sudo nvim /etc/udev/rules.d/99-backlight.rules`
