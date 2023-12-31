@@ -51,3 +51,18 @@ Xft.dpi: 192
 Xcursor.size: 32
 ```
 3. Reboot, and see the power of good scaling!
+### Installing nvidia drivers
+1. Install proprietary drivers with `sudo pacman -S nvidia nvidia-utils nvidia-prime`
+2. Enable kernel parameters by opening `sudo nvim /etc/default/grub` and add these parameters: `GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1"`
+3. Update the GRUB config with `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+4. Add modules to mkinitcpio.conf with `sudo nvim /etc/mkinitcpio.conf` and add these parameters: `MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)`
+5. Regenerate the image with `sudo mkinitcpio -P`
+6. Reboot
+7. Run any desired program on your nvidia card with `prime-run [program]`
+### Installing btop system monitor
+1. clone with `git clone https://github.com/aristocratos/btop`
+2. Enter the directory with `cd btop`
+3. Install dependencies with `sudo pacman -S clang sed`
+4. Compile with `make`
+5. Install with `sudo make install`
+6. Enable default root permissions with `sudo make setuid`

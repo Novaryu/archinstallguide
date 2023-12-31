@@ -9,10 +9,10 @@ From USB to Arch command line.
    It should output 32 or 64.
 ### Connect to the internet
 1. Find the network interface with `ip link`
-2. Set it to up with `ip link set [device] up`
+2. Set it to up with `ip link set [device] up`, replacing `[device]` with the interface found in the previous step
 3. Wired internet should automatically connect, test with `ping archlinux.org` and quit with Ctrl-C
 #### (Wireless) Connect to an access point
-enter `iwctl`and perform the following commands like so:
+enter `iwctl`and perform the following commands (replacing `[device]` with your wireless device found in `device list`):
 ```
 iwctl
 device list
@@ -21,8 +21,8 @@ station [device] scan
 station [device] get-networks
 station [device] connect [SSID]
 ```
-Test your connection with `ping archlinux.org`
-Confirm system time updated with `timedatectl` (It will be in UTC, we will change this later)
+4. Test your connection with `ping archlinux.org`
+5. Confirm system time updated with `timedatectl` (It will be in UTC, we will change this later)
 ### Disk Partitioning
 1. List all disks with `fdisk -l`
 2. Enter the desired disk with `fdisk /dev/[device]`, replacing `[device]` with your listed device from fdisk
@@ -36,7 +36,7 @@ Confirm system time updated with `timedatectl` (It will be in UTC, we will chang
 10. Set the partition to a Linux Filesystem partition with t (find Linux Filesystem with -L)
 11. Save changes and quit fdisk with `w`
 ### Disk Formatting
-Replace `[partition#]`below with the actual partition
+Replace `[partition#]`below with the actual partition, again found via `fdisk -l`
 1. Format the EFI partition with `mkfs.fat -F 32 /dev/[partition1]`
 2. Format the Swap partition with `mkswap /dev/[partition2]`
 3. Format the Linux partition with `mkfs.ext4 /dev/[partition3]`

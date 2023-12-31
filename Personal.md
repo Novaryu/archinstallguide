@@ -27,3 +27,24 @@
 6. When it asks for username type your username
 7. When it asks for password type your token
 It should automatically store your token permanently on your device.
+### Install a service to automatically run when suspended/resumed
+1. Create a service with `sudo nvim /etc/systemd/system/sleep.service`
+2. Add the following lines to the service:
+```
+[Unit]
+Description=sleep hook
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/usr/share/sleep/suspend.sh
+ExecStop=-/usr/share/sleep/resume.sh
+
+[Install]
+WantedBy=sleep.target
+```
+3. Create your custom scripts in /usr/share/sleep/ with `sudo nvim /usr/share/sleep/suspend.sh` and `sudo nvim /usr/share/sleep/resume.sh`
+4. Enable the service with `sudo systemctl enable sleep`
+5. Reboot or start the service.
