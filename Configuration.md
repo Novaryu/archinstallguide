@@ -36,3 +36,25 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec startx
 fi
 ```
+### Install a status line (polybar in this example)
+1. Run `pacman -S polybar`
+2. Create a config directory with `mkdir ~/.config/polybar`
+3. Copy the config file into your config directory with `cp /etc/polybar/config.ini ~/.config/polybar/config.ini`
+4. Create a polybar launch script using `touch ~/bin/launch_polybar.sh`
+5. Add the following to launch_polybar.sh:
+```
+#!/bin/bash
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Launch Polybar, using default config location ~/.config/polybar/config.ini
+polybar mybar 2>&1 | tee -a /tmp/polybar.log & disown
+
+echo "Polybar launched..."
+```
+6. Make it executable with `chmod +x ~/bin/launch_polybar.sh`
+7. Add the following line to i3 config: `exec_always --no-startup-id ~/bin/launch_polybar.sh`
+The `exec_always` command tells i3 to reload polybar whenever i3 is reloaded (don't have to explicitly restart polybar)
+8. Reload i3 with alt+shift+r (default keybind)
+9. Configure polybar as needed with nvim `~/.config/polybar/config.ini`

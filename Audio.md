@@ -1,6 +1,6 @@
 ### Pipewire, mpd, and ncmpcpp
 1. Install pipewire, pipewire-pulse, pavucontrol, and alsa-tools. `sudo pacman -S pipewire pipewire-pulse pavucontrol alsa-tools`
-2. Install mpd and ncmpcpp with `sudo pacman -S mpd ncmpcpp`
+2. Install mpd, mpc, and ncmpcpp with `sudo pacman -S mpd mpc ncmpcpp`
 3. Create mpd config folder with `mkdir -p ~/.config/mpd`
 4. Copy mpd config into user directory with `cp /usr/share/doc/mpd/mpdconf.example ~/.config/mpd/mpd.conf`
 5. Configure to work with pipewire by adding:
@@ -16,3 +16,4 @@ name		"PipeWire Sound Server"
 8. Copy the ncmpcpp config files into user directory with `cp /usr/share/doc/ncmpcpp/config ~/.config/ncmpcpp/config`
 9. Change the music directory in the config file to the directory you set in mpd.conf
 10. Change ncmpcpp bindings by copying the default bindings and editing with `cp /usr/share/doc/ncmpcpp/bindings ~/.config/ncmpcpp/bindings`
+11. Control mpd by using mpc with e.g. `mpc toggle`, `mpc volume +5`, `mpc next`, `mpc prev`, etc.

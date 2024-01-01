@@ -76,4 +76,16 @@ Include = /etc/pacman.d/mirrorlist
 3. Install Wine with `sudo pacman -S wine`
 4. Install Wine Mono with `sudo pacman -S wine-mono` (some .NET applications require it)
 5. Run `wine [program]`
-
+### Install a notification server to display desktop notifications
+1. Install libnotify with `sudo pacman -S libnotify`
+2. Install the notification daemon service with `sudo pacman -S notification-daemon`
+3. Create a dbus service by creating a new file with `sudo touch /usr/share/dbus-1/services/org.freedesktop.Notifications.service`
+4. Edit the file with `sudo nvim /usr/share/dbus-1/services/org.freedesktop.Notifications.service`
+5. Add the following lines to the file:
+```
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/usr/lib/notification-daemon-1.0/notification-daemon
+```
+6. Test with this command: `notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information`
+You can customize it by installing your favorite implementation (e.g. dunst, wired-notify)
