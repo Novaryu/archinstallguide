@@ -17,3 +17,5 @@ name		"PipeWire Sound Server"
 9. Change the music directory in the config file to the directory you set in mpd.conf
 10. Change ncmpcpp bindings by copying the default bindings and editing with `cp /usr/share/doc/ncmpcpp/bindings ~/.config/ncmpcpp/bindings`
 11. Control mpd by using mpc with e.g. `mpc toggle`, `mpc volume +5`, `mpc next`, `mpc prev`, etc.
+12. Add EQ by installing `sudo pacman -S easyeffects lsp-plugins` and setting desired EQ in easyeffects
+13. Make sure you run it at start by adding this to i3 config: `exec --no-startup-id easyeffects --gapplication-service`

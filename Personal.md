@@ -48,3 +48,34 @@ WantedBy=sleep.target
 3. Create your custom scripts in /usr/share/sleep/ with `sudo nvim /usr/share/sleep/suspend.sh` and `sudo nvim /usr/share/sleep/resume.sh`
 4. Enable the service with `sudo systemctl enable sleep`
 5. Reboot or start the service.
+### Install Spotify with Spicetify + Add Extensions
+1. Install pgp key with `curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -`
+2. Install spotify dependencies with `sudo pacman -S libcurl-gnutls libayatana-appindicator`
+3. Clone spotify repository with `git clone https://aur.archlinux.org/spotify.git`
+4. cd into directory with `cd spotify`
+5. Run `makepkg`
+6. Install with `sudo pacman -U spotify-*.pkg.tar.zst`
+7. Run SpotX-Bash patcher with `bash <(curl -sSL https://spotx-official.github.io/run.sh)` (removes banners/ads)
+8. clone spicetify-cli with `git clone https://github.com/spicetify/spicetify-cli`
+9. run the install script with `sudo ./install.sh`
+10. run spicetify at least once by navigating to ~/.spicetify and running `./spicetify`
+11. Put extensions (.js file) in .spicetify/extensions
+12. Apply extension with `./spicetify config extensions [filename]` then run `./spicetify apply`
+13. Repeat for other extensions (recommended: adblock.js, keyboardShortcut.js, popupLyrics.js, shuffle+.js, trashbin.js)
+14. Apply themes if desired by adding a folder with the theme name in .spicetify/Themes and adding color.ini and user.css, then running `./spicetify config current_theme [theme]` followed by `./spicetify apply`
+### Install speech narrator for notifications
+1. Install speech dispatcher with `sudo pacman -S speech-dispatcher espeakup`
+2. Configure it with `spd-conf`
+3. Test it with `spd-say hello`
+### Install Japanese Input
+1. Install dependencies fcitx5+bazel with `sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk bazel`
+2. Install dependency mozc by cloning `git clone https://aur.archlinux.org/mozc.git` and `cd mozc && makepkg && sudo pacman -U mozc-*.pkg.tar.zst`
+3. Install fcitx5-mozc-ut from the AUR by cloning `git clone https://aur.archlinux.org/packages/fcitx5-mozc-ut.git`
+4. Run `fcitx5-configtool` and add Mozc (Japanese) to the list of languages
+5. Add the following to ~/.bashrc:
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
+6. Reboot and try Control+Space in terminal and browser
