@@ -8,9 +8,9 @@
 2. Set a password for your user with `passwd [username]`
 3. Install sudo with `pacman -S sudo`
 4. Add user to Sudo group with `usermod -aG wheel [username]`
-5. Edit the sudoers file with `visudo` (replace nvim with your editor)
+5. Edit the sudoers file with `visudo`
 6. Uncomment the line (remove the #) that says `%wheel ALL=(ALL:ALL) ALL` then save and exit
-7. Test your ability to sudo properly by logging in with `logout` then logging in as your user. Once logged in, try `sudo pacman -Syu` to make sure sudo works
+7. Test your ability to sudo properly by logging out with `logout` then logging in as your user. Once logged in, try `sudo pacman -Syu` to make sure sudo works
 8. `logout` and re-enter root's login
 ### Install a window manager (i3 in this example)
 1. Run `pacman -S xorg-server xorg-xinit` to install Xorg and necessary addons.
@@ -56,5 +56,5 @@ echo "Polybar launched..."
 6. Make it executable with `chmod +x ~/bin/launch_polybar.sh`
 7. Add the following line to i3 config: `exec_always --no-startup-id ~/bin/launch_polybar.sh`
 The `exec_always` command tells i3 to reload polybar whenever i3 is reloaded (don't have to explicitly restart polybar)
-8. Reload i3 with alt+shift+r (default keybind)
+8. Reload i3 with `alt+shift+r` (default keybind)
 9. Configure polybar as needed with nvim `~/.config/polybar/config.ini`
