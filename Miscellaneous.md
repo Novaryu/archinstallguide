@@ -89,3 +89,7 @@ Exec=/usr/lib/notification-daemon-1.0/notification-daemon
 ```
 6. Test with this command: `notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information`
 You can customize it by installing your favorite implementation (e.g. dunst, wired-notify)
+### Automatically hide the mouse cursor when not in user
+1. Install unclutter with `sudo pacman -S unclutter`
+2. Append `unclutter &` to `.xinitrc` or `exec --no-startup-id unclutter &` to i3 config.
+3. Reboot
