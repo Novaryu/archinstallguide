@@ -66,7 +66,8 @@ replacing Identifier/DisplaySize with the primary output of `xrandr | grep prima
 3. Reboot
 ### Installing nvidia drivers
 1. Install proprietary drivers with `sudo pacman -S nvidia nvidia-utils nvidia-prime`
-2. Enable kernel parameters by opening `sudo nvim /etc/default/grub` and add these parameters: `GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1"`
+2. Enable kernel parameters by opening `sudo nvim /etc/default/grub` and add these parameters: `GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1"`  
+NOTE: the `nvidia-drm.fbdev=1` parameter is experimental. Some systems perform much better when disabled, so YMMV. Disable if having issues.
 3. Update the GRUB config with `sudo grub-mkconfig -o /boot/grub/grub.cfg`
 4. Add modules to mkinitcpio.conf with `sudo nvim /etc/mkinitcpio.conf` and add these parameters: `MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)`
 5. Regenerate the image with `sudo mkinitcpio -P`

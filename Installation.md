@@ -55,8 +55,8 @@ NOTE: (If it fails with a PGP key error, update pacman keys with `pacman-key --r
 3. Set the root password with `passwd`, following the prompts
 #### (Wired) Setup network service
 1. Install necessary tools with `pacman -S netctl dhcpcd`
-2. Find your network card with `ip link`
-3. Enable your network card with `systemctl enable dhcpcd@eth0.service`, replacing eth0 with your card's identifier
+2. Enable your network card with `systemctl enable dhcpcd.service`
+3. (OPTIONAL) Shave off 5s of boot time by adding `noarp` to `/etc/dhcpcd.conf`
 #### (Wireless) Setup wireless service
 1. Install necessary tools with `pacman -S netctl dialog wpa_supplicant dhcpcd`
 2. Enable the resolved service with `systemctl enable systemd-resolved.service`
