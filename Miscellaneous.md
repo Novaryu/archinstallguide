@@ -107,3 +107,13 @@ You can customize it by installing your favorite implementation (e.g. dunst, wir
 1. Install unclutter with `sudo pacman -S unclutter`
 2. Append `unclutter &` to `.xinitrc` or `exec --no-startup-id unclutter &` to i3 config.
 3. Reboot
+### Configure a static IP address
+1. Open `sudo nvim /etc/dhcpcd.conf` and configure so it looks something like this:
+```
+interface [interface]
+static ip_address=192.168.0.50
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1 9.9.9.9
+```
+Be sure to replace [interface] with the interface listed in `ip link`, and the rest with your desired configuration
+2. Reboot
