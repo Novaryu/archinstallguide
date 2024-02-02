@@ -1,6 +1,14 @@
-### Configure Time and Hostname
-1. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
-2. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
+### Configure Hostname and Time
+Note: the following commands will require sudo access
+1. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
+2. Open locale generator by opening etc/locale.gen in your installed editor `nvim /etc/locale.gen` and uncomment (delete #) locales you want (e.g. en_US.UTF-8 UTF-8)
+3. Run `locale-gen` to generate the locales
+4. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
+5. Find your time zone with `timedatectl list-timezones`
+6. Set the local time zone with (as an example) `ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime` (Replace US/Pacific with your time zone)
+7. Generate the adjusted time with `hwclock --systohc`
+8. Enable the time-sync service with `systemctl enable systemd-timesyncd.service`
+9. Reboot
 ### (Wireless) Connect to an access point
 1. Run `wifi-menu` and select the access point you want to connect to and enter the passphrase when prompted. Change the default name to something that's easier to type
 2. It should connect to the access point automatically. You can test with `ping archlinux.org`

@@ -52,13 +52,7 @@ NOTE: (If it fails with a PGP key error, update pacman keys with `pacman-key --r
 ### Configure Linux
 1. Install your favorite editor (neovim in this example) `pacman -S neovim`
 2. Make your editor the default system editor with `echo 'EDITOR=nvim' | tee -a /etc/environment`
-3. Find your time zone with `timedatectl list-timezones`
-4. Set the time zone with (as an example) `ln -sf /usr/share/zoneinfo/US/Pacific` (Replace US/Pacific with your time zone)
-5. Generate the adjusted time with `hwclock --systohc`
-6. Enable the time-sync service with `systemctl enable systemd-timesyncd.service`
-7. Open locale generator by opening etc/locale.gen in your installed editor `nvim /etc/locale.gen` and uncomment (delete #) locales you want (e.g. en_US.UTF-8 UTF-8)
-8. Run `locale-gen` to generate the locales
-9. Set the root password with `passwd`, following the prompts
+3. Set the root password with `passwd`, following the prompts
 #### (Wired) Setup network service
 1. Install necessary tools with `pacman -S netctl dhcpcd`
 2. Find your network card with `ip link`
