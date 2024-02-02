@@ -1,3 +1,6 @@
+### Configure Time and Hostname
+1. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
+2. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
 ### (Wireless) Connect to an access point
 1. Run `wifi-menu` and select the access point you want to connect to and enter the passphrase when prompted. Change the default name to something that's easier to type
 2. It should connect to the access point automatically. You can test with `ping archlinux.org`

@@ -51,6 +51,19 @@ Xft.dpi: 192
 Xcursor.size: 32
 ```
 3. Reboot, and see the power of good scaling!
+
+**ALTERNATE METHOD**:
+1. Follow step 1 above, omitting GDK_DPI_SCALE=0.5 and QT_FONT_DPI=96
+2. Instead of adding .Xresources, allow the X server to automatically set the DPI by adding a file in /etc/X11/xorg.conf.d with
+`sudo nvim /etc/X11/xorg.conf.d/90-monitor.conf` and add these lines:
+```
+Section "Monitor"
+    Identifier             "eDP-1"
+    DisplaySize             1016 635    # In millimeters
+EndSection
+```
+replacing Identifier/DisplaySize with the primary output of `xrandr | grep primary` and display size of `xdpyinfo | grep -B2 resolution`
+3. Reboot
 ### Installing nvidia drivers
 1. Install proprietary drivers with `sudo pacman -S nvidia nvidia-utils nvidia-prime`
 2. Enable kernel parameters by opening `sudo nvim /etc/default/grub` and add these parameters: `GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1"`

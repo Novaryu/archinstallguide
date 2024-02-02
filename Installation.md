@@ -45,7 +45,8 @@ Replace `[partition#]`below with the actual partition, again found via `fdisk -l
 2. Mount EFI with `mount --mkdir /dev/[partition1] /mnt/boot`
 3. Mount swap with `swapon /dev/[partition2]`
 ### Install and Enter Linux
-1. Install linux with `pacstrap -K /mnt base linux linux-firmware`
+1. Install linux with `pacstrap -K /mnt base linux linux-firmware`  
+NOTE: (If it fails with a PGP key error, update pacman keys with `pacman-key --refresh-keys`)
 2. Generate fstab with `genfstab -U /mnt >> /mnt/etc/fstab`
 3. Chroot into system `arch-chroot /mnt`
 ### Configure Linux
@@ -57,9 +58,7 @@ Replace `[partition#]`below with the actual partition, again found via `fdisk -l
 6. Enable the time-sync service with `systemctl enable systemd-timesyncd.service`
 7. Open locale generator by opening etc/locale.gen in your installed editor `nvim /etc/locale.gen` and uncomment (delete #) locales you want (e.g. en_US.UTF-8 UTF-8)
 8. Run `locale-gen` to generate the locales
-9. Apply your preferred locale with `localectl set-locale LANG=en_US.UTF-8`, Replacing the locale with your preferred locale
-10. Create a hostname with `hostnamectl set-hostname [name]` replacing 'name' with your preferred hostname
-11. Set the root password with `passwd`, following the prompts
+9. Set the root password with `passwd`, following the prompts
 #### (Wired) Setup network service
 1. Install necessary tools with `pacman -S netctl dhcpcd`
 2. Find your network card with `ip link`
