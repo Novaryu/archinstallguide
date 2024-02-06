@@ -73,13 +73,6 @@ NOTE: the `nvidia-drm.fbdev=1` parameter is experimental. Some systems perform m
 5. Regenerate the image with `sudo mkinitcpio -P`
 6. Reboot
 7. Run any desired program on your nvidia card with `prime-run [program]`
-### Installing btop system monitor
-1. clone with `git clone https://github.com/aristocratos/btop`
-2. Enter the directory with `cd btop`
-3. Install dependencies with `sudo pacman -S clang sed`
-4. Compile with `make`
-5. Install with `sudo make install`
-6. Enable default root permissions with `sudo make setuid`
 ### Installing Wine
 1. enable the multilib repository by opening `sudo /etc/pacman.conf` and uncommenting this section:
 ```

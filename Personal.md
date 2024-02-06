@@ -13,6 +13,9 @@
     - Remove everything from homepage except for Web Search
 3. Install the following addons:
     - Ublock Origin
+    - SponsorBlock
+    - Playback Speed
+    - Image Data
     - Tab Session Manager
         - Configuration: uncheck both lazy loading checkboxes, uncheck save session regularly, change maximum number saved when window was closed/exiting browser to 5, change color scheme to dark
     - Custom search engine (i.e. Startpage or alternative)
@@ -81,10 +84,11 @@ export XMODIFIERS=@im=fcitx
 6. Reboot and try Control+Space in terminal and browser
 ### Install StableDiffusion
 1. Create a folder for the installation and `cd` into it
-2. Install dependencies with `sudo pacman -S wget git python3 pyenv`
+2. Install dependencies with `sudo pacman -S wget git python3 pyenv tk`
 3. Install python 3.10.6 with `pyenv install 3.10.6` and make it local with `pyenv local 3.10.6`
 4. Create a virtual environment with `pyenv exec python -m venv venv`
 5. Activate the virtual environment with `source venv/bin/activate`
 6. Grab the install script with `wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh`
-7. Make `webui.sh` executable with `chmod +x webui.sh` and run with `./webui.sh`
+7. Open `webui.sh` and add to the top `source venv/bin/activate`
+7. Make `webui.sh` executable with `chmod +x webui.sh` and run with `./webui.sh --xformers --medvram` (or whatever other desired arguments)
 8. It will automatically install and open the stable diffusion web ui when finished
