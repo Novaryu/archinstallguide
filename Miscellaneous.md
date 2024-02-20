@@ -110,3 +110,9 @@ static domain_name_servers=192.168.0.1 9.9.9.9
 ```
 Be sure to replace [interface] with the interface listed in `ip link`, and the rest with your desired configuration
 2. Reboot
+### Automatically turn on numlock at boot
+1. Clone `mkinitcpio-numlock` with `git clone https://aur.archlinux.org/mkinitcpio-numlock.git` and cd into it
+2. Run `makepkg` and then `sudo pacman -U <package>`, replacing <package> with the name of the generated package
+3. Open `sudo nvim /etc/mkinitcpio.conf` and add `numlock` to the list after `HOOKS=`, ensuring it is before `encrypt`
+4. Regenerate the image with `sudo mkinitcpio -P`
+5. Reboot
