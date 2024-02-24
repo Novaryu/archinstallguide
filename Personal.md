@@ -73,7 +73,7 @@ WantedBy=sleep.target
 ### Install Japanese Input
 1. Install dependencies fcitx5+bazel with `sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk bazel`
 2. Install dependency mozc by cloning `git clone https://aur.archlinux.org/mozc.git` and `cd mozc && makepkg && sudo pacman -U mozc-*.pkg.tar.zst`
-3. Install fcitx5-mozc-ut from the AUR by cloning `git clone https://aur.archlinux.org/packages/fcitx5-mozc-ut.git`
+3. Install fcitx5-mozc-ut from the AUR by cloning `git clone https://aur.archlinux.org/fcitx5-mozc-ut.git` and `cd fcitx5-mozc-ut && makepkg && sudo pacman -U fcitx5-mozc-ut-*.pkg.tar.zst`
 4. Run `fcitx5-configtool` and add Mozc (Japanese) to the list of languages
 5. Add the following to ~/.bashrc:
 ```
